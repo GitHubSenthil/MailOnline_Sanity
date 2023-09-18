@@ -10,3 +10,7 @@ To be updated in Config properties file.
 
 Environment details:
 To be updated in Config properties file.
+
+HTML Report: Basic Cucumber Report
+Path: Target foler
+
