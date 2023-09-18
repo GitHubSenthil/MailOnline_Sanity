@@ -1,5 +1,6 @@
 package commonUtil;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -34,7 +35,7 @@ public class waitUtil {
     //Method : Wait for the Element to Exist
     //Param1 : WebElement List item - FindElements
     //Param2 : Time in seconds - Wait to find the element
-    public static boolean waitUntilElementExist(List<WebElement> waitElement, int waitTime) {
+    public static boolean waitUntilElementExist(WebDriver driver, String waitElement, int waitTime) {
 
         int waitFlag = 0;
         try {
@@ -44,7 +45,7 @@ public class waitUtil {
                 if (waitFlag >= waitTime){
                     return false;
                 }
-            } while (waitElement.size () >= 1);
+            } while (driver.findElements ( By.xpath ( waitElement ) ).size () >= 1);
             return true;
         }
         catch (Exception e) {

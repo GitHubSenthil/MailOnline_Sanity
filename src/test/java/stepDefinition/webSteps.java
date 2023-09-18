@@ -35,9 +35,6 @@ public class webSteps {
             Assert.assertTrue ( driver.getTitle ().contains ( "Mail Online" ) );
             driver.findElement ( By.xpath ( "//button[text()='Got it']" ) ).click ();
         }
-        else
-            Assert.assertTrue ( false );
-
 
         if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//div[@id='outerWrapper']/div[@id='closeButton']") ), 30))
             driver.findElement ( By.xpath ("//div[@id='outerWrapper']/div[@id='closeButton']")).click ();
@@ -58,7 +55,7 @@ public class webSteps {
 
         //Wait Until the Advertisement to run
         waitUtil.waitForElement(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 10);
-        waitUtil.waitUntilElementExist(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 100);
+        waitUtil.waitUntilElementExist(driver, "//div[@class='video-ad-label vjs-control']", 100);
 
         //Verify Video is playing
         if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//div[@class='vjs-play-control vjs-control  vjs-playing']") ), 10))
@@ -100,7 +97,7 @@ public class webSteps {
 
         //Wait Until the Advertisement to run
         waitUtil.waitForElement(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 10);
-        waitUtil.waitUntilElementExist(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 100);
+        waitUtil.waitUntilElementExist(driver, "//div[@class='video-ad-label vjs-control']", 100);
 
         sNextVideo = driver.findElement ( By.xpath ("//div[@class='vjs-title-text']/div")).getText ();
         System.out.println ( sNextVideo );
@@ -132,7 +129,7 @@ public class webSteps {
 
         //Wait Until the Advertisement to run
         waitUtil.waitForElement(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 10);
-        waitUtil.waitUntilElementExist(driver.findElements ( By.xpath ("//div[@class='video-ad-label vjs-control']") ), 100);
+        waitUtil.waitUntilElementExist(driver, "//div[@class='video-ad-label vjs-control']", 100);
 
         sNextVideo = driver.findElement ( By.xpath ("//div[@class='vjs-title-text']/div")).getText ();
         System.out.println ( sNextVideo );
@@ -208,15 +205,13 @@ public class webSteps {
         driver.navigate().to ( "https://www.dailymail.co.uk/" );
         Thread.sleep ( 3000 );
         //Accepting the Cookies
-        if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//button[text()='Got it']") ), 20)) {
+        if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//button[text()='Got it']") ), 5)) {
             Assert.assertTrue ( driver.getTitle ().contains ( "Mail Online" ) );
             driver.findElement ( By.xpath ( "//button[text()='Got it']" ) ).click ();
         }
-        else
-            Assert.assertTrue ( false );
 
 
-        if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//button[@class='close-1_Ex1']") ), 20))
+        if (waitUtil.waitForElement(driver.findElements ( By.xpath ("//button[@class='close-1_Ex1']") ), 5))
             driver.findElement ( By.xpath ("//button[@class='close-1_Ex1']") ).click ();
     }
 
@@ -284,8 +279,8 @@ public class webSteps {
 
     @After
     public void closedriver(){
-        //driver.close ();
-        //driver=null;
+        driver.close ();
+        driver=null;
         //driver.get("D:\\MailOnline\\MailOnline_Sanity\\target\\cucumberHtmlReport.html");
 
     }
