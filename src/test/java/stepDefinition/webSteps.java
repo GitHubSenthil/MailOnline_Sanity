@@ -277,10 +277,10 @@ public class webSteps {
 
     }
 
-    @After
+
     public void closedriver(){
-        driver.close ();
-        driver=null;
+        //driver.close ();
+        //driver=null;
         //driver.get("D:\\MailOnline\\MailOnline_Sanity\\target\\cucumberHtmlReport.html");
 
     }
